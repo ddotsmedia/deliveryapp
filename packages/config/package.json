@@ -1,0 +1,14 @@
+{
+  "name": "@ufd/config",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./eslint.config.mjs": "./eslint.config.mjs"
+  },
+  "devDependencies": {
+    "typescript-eslint": "8.72.0",
+    "eslint": "10.13.0",
+    "typescript": "6.0.3"
+  }
+}

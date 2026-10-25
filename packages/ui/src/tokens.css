@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --color-brand: #0f766e;
+  --color-brand-fg: #ffffff;
+  --color-surface: #ffffff;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-danger: #b91c1c;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --radius-md: 0.5rem;
+  --space-unit: 0.25rem;
+}
