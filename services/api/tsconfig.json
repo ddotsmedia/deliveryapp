@@ -1,5 +1,16 @@
 {
   "extends": "@ufd/config/tsconfig.base.json",
-  "compilerOptions": { "noEmit": true, "rootDir": ".", "types": ["node"] },
-  "include": ["src", "drizzle.config.ts"]
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": ".",
+    "types": [
+      "node"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false
+  },
+  "include": [
+    "src",
+    "drizzle.config.ts"
+  ]
 }

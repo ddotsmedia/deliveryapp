@@ -100,6 +100,12 @@ export async function seed(connectionString?: string): Promise<void> {
           ]).onConflictDoNothing();
         }
       }
+
+      // Staff links: MERCHANT_OWNER (user 101) and MERCHANT_STAFF (user 102) belong to org 400.
+      await tx.insert(schema.merchantStaff).values([
+        { id: id(4000), userId: id(101), orgId: id(400), role: "OWNER" },
+        { id: id(4001), userId: id(102), orgId: id(400), role: "STAFF" },
+      ]).onConflictDoNothing();
     });
     console.log("seed: ok");
   } finally {
