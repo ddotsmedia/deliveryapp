@@ -21,10 +21,12 @@
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
     "@types/react": "19.3.0",
+    "@ufd/config": "workspace:*",
+    "eslint": "10.13.0",
     "react": "19.3.1",
     "tailwindcss": "4.3.3",
     "typescript": "6.0.3",
-    "@ufd/config": "workspace:*"
+    "typescript-eslint": "8.72.0"
   },
   "peerDependencies": {
     "react": ">=19"

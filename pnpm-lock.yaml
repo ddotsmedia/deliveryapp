@@ -197,9 +197,15 @@ importers:
       '@ufd/config':
         specifier: workspace:*
         version: link:../config
+      eslint:
+        specifier: 10.13.0
+        version: 10.13.0(jiti@2.7.0)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+      typescript-eslint:
+        specifier: 8.72.0
+        version: 8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@6.0.3)
 
   packages/types:
     dependencies:
@@ -247,6 +253,9 @@ importers:
       '@ufd/config':
         specifier: workspace:*
         version: link:../config
+      eslint:
+        specifier: 10.13.0
+        version: 10.13.0(jiti@2.7.0)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -256,6 +265,9 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+      typescript-eslint:
+        specifier: 8.72.0
+        version: 8.72.0(eslint@10.13.0(jiti@2.7.0))(typescript@6.0.3)
 
   services/api:
     dependencies:
