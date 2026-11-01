@@ -46,8 +46,9 @@ jobs:
         run: |
           if [ -f package.json ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
 
-      - uses: pnpm/action-setup@v4
+      - name: Install pnpm
         if: steps.detect.outputs.present == 'true'
+        run: npm install -g pnpm@12.15.0
 
       - uses: actions/setup-node@v4
         if: steps.detect.outputs.present == 'true'
