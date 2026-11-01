@@ -6,7 +6,7 @@ import { loadConfig } from "../src/config.js";
 import { CaptureOtpSender } from "../src/infra/otp-sender.js";
 
 export const TEST_DB = process.env.DATABASE_TEST_URL ?? "postgresql://postgres:postgres@localhost:5432/uae_food_test";
-export const TEST_REDIS = process.env.REDIS_TEST_URL ?? "redis://localhost:6379";
+export const TEST_REDIS = process.env.REDIS_TEST_URL ?? process.env.REDIS_URL ?? "redis://localhost:6379";
 export const WEBHOOK_SECRET = "test-webhook-secret-0123456789";
 
 export type Call = { status: number; body: unknown; contentType: string };
