@@ -1,0 +1,6 @@
+FROM node:24-alpine
+RUN npm install -g pnpm@12.15.0
+WORKDIR /repo
+COPY . .
+RUN pnpm install --frozen-lockfile
+CMD ["pnpm", "--filter", "@ufd/worker", "dev"]

@@ -27,3 +27,12 @@
 - Dispatch: offers created inside the READY transaction for online couriers in the zone, 20 s TTL. Accept inserts the assignment first (unique order_id arbitrates), then claims the offer with a conditional UPDATE.
 - Phone validation is E.164 generic (`+[1-9]\d{7,14}`); UAE-specific validation is deferred.
 - Deferred to later phases: admin console endpoints, notifications, support tickets, finance settlements and payouts, merchant catalog CRUD, cart modifiers, WebSocket tracking, service-area polygon check, offer-expiry sweep worker, Checkout.com adapter (stub throws NOT_CONFIGURED).
+
+## Worker (Phase 4)
+- Plain TypeScript process (no Nest). Workers use raw SQL via `pg`, not drizzle, to avoid importing the API package across workspaces.
+- Ledger for DELIVERED is posted by the API inside the deliver transaction. The worker's order-events job only notifies, so entries are not duplicated.
+- Outbox relay is an in-process poller (every 1 s, batch 100, `FOR UPDATE SKIP LOCKED`), not a BullMQ queue. Jobs use the outbox id as `jobId`, so a retried relay cannot double-enqueue. Rows stuck in PROCESSING for 5 minutes are reclaimed.
+- Dispatch re-offer runs every 10 s and offers only to couriers who have not already received an offer for that order.
+- Settlement (02:00 Asia/Dubai) and reconciliation (04:00 Asia/Dubai) are job schedulers. Settlement is idempotent per org and period.
+- Raw inserts pass UUIDv7 ids explicitly (`src/uuid.ts`, copied from the API). Postgres does not generate them.
+- `msgpackr-extract` (bullmq native dependency) is allowed through `allowBuilds`.
